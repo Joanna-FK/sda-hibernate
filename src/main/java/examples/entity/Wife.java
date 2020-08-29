@@ -1,9 +1,6 @@
 package examples.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Wife {
@@ -11,8 +8,14 @@ public class Wife {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    @OneToOne(mappedBy = "wife")
+    Husband husband;
 
     public Wife() {
+    }
+
+    public Wife(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -23,11 +26,16 @@ public class Wife {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Husband getHusband() {
+        return husband;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Wife(Husband husband) {
+        this.husband = husband;
+    }
+
+    public void setHusband(Husband husband) {
+        this.husband = husband;
+        this.husband.setWife(this);
     }
 }
