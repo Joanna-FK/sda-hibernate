@@ -9,10 +9,10 @@ import org.hibernate.Transaction;
 
 public class Main11ManyToMany {
     public static void main(String[] args) {
-    SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
+        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
-    Session session = sessionFactory.openSession();
-    Transaction transaction = session.beginTransaction();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
 
         School schoolOne = new School("UG");
         School schoolTwo = new School("PG");
@@ -29,6 +29,6 @@ public class Main11ManyToMany {
         session.persist(schoolTwo);
 
         transaction.commit();
-    session.close();
-}
+        session.close();
+    }
 }

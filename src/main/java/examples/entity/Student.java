@@ -11,6 +11,11 @@ public class Student {
     Long id;
     String name;
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "student_school",                                                // name - nazwa tabeli pośredniczącej
+            joinColumns = @JoinColumn(name = "student_id"),                         // joinColumns - nazwa kolumny z kluczem encji Student
+            inverseJoinColumns = @JoinColumn(name = "school_id")                    // inverseJoinColumns - nazwa kolumny z kluczem encji School
+    )
     Set<School> schools = new HashSet<>();
 
     public Student() {
@@ -22,5 +27,9 @@ public class Student {
 
     public void addSchool(School school) {
         schools.add(school);
+    }
+
+    public String getName() {
+        return name;
     }
 }
