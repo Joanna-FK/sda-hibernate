@@ -13,5 +13,7 @@
         <mapping class="examples.entity.Employee"/>
         <mapping class="examples.entity.Wife"/>
         <mapping class="examples.entity.Husband"/>
+        <mapping class="examples.entity.Book"/>
+        <mapping class="examples.entity.Client"/>
     </session-factory>
 </hibernate-configuration>
